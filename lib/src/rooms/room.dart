@@ -1,3 +1,5 @@
+import 'bed.dart';
+
 class Room {
   const Room(this.number, this.beds);
 
