@@ -6,3 +6,4 @@ class Room {
   final int number;
   final List<Bed> beds;
 }
+
