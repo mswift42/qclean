@@ -5,7 +5,8 @@ import 'dart:typed_data';
 
 import 'package:printing/printing.dart';
 
-Future<Uint8List> generateDocument(PdfPageFormat format) async {
+Future<Uint8List> generateDocument() async {
+  const format = PdfPageFormat.standard;
   final doc = pw.Document(pageMode: PdfPageMode.outlines);
   final font1 = await PdfGoogleFonts.openSansRegular();
   final font2 = await PdfGoogleFonts.openSansBold();
