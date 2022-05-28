@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: const Text('QcClean')),
         body: SizedBox(
             height: 1080.0,
-            width: 800.0,
+            width: double.infinity,
             child: PdfPreview(build: (e) => generateDocument(),)),
       ),
     );
