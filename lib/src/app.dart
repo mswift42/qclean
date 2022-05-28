@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:qclean/src/pdf/template.dart';
+import 'package:printing/printing.dart';
 
 import 'sample_feature/sample_item_details_view.dart';
 import 'sample_feature/sample_item_list_view.dart';
@@ -86,25 +87,9 @@ import 'settings/settings_view.dart';
 //     );
 //   }
 // }
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var doc = [];
-
-  Future<void> _init() async {
-    doc = await generateDocument();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _init();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,31 +97,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('QcClean')),
-        body: Column(
-          children: [
-            const Text('Cleaning is fun.!',
-            style: TextStyle(color: Colors.black),
-            textDirection: TextDirection.ltr,),
-            ListView.builder(
-              padding: const EdgeInsets.all(4),
-              shrinkWrap: true,
-              itemCount: doc.length,
-              itemBuilder: (BuildContext contexwidgett, int index) {
-                return Container(
-                  height: 300.0,
-                  width: 600.0,
-                  child: Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Text(
-                      'doc: ${doc[index]}',
-                      textDirection: TextDirection.ltr,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
+        body: SizedBox(
+            height: 1080.0,
+            width: 800.0,
+            child: PdfPreview(build: (e) => generateDocument(),)),
       ),
     );
   }
